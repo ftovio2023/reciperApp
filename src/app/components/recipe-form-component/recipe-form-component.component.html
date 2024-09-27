@@ -1,0 +1,28 @@
+<h4>Ingrese la Nueva Receta</h4>
+
+<form [formGroup]="myForm" (ngSubmit)="sendRecipe()"> 
+    <label class="form-label">Nombre</label>
+    <input class="form-control mb-2" 
+            placeholder="Nombre de la Receta" 
+            type="text" 
+            name="name" 
+            formControlName="name">
+
+            <div class="alert alert-danger" *ngIf="messageError('name')">El nombre es Requerido</div>
+
+    <label class="form-label">Dificultad</label>
+    <input class="form-control mb-2" 
+            placeholder="Nombre de la Receta" 
+            type="text" 
+            name="dificulty" 
+            formControlName="dificulty">
+
+            <div class="alert alert-danger" *ngIf="messageError('dificulty')">La dificultad es Requerida</div>
+
+    <button class="btn btn-primary" [disabled]="myForm.invalid">Guardar</button>
+</form>
+
+<pre>Valido: {{ myForm.valid }} </pre>
+<pre> {{ myForm.value | json }}</pre>
+<pre> {{ myForm.get('name')?.pristine }}</pre>
+<pre> {{ myForm.get('name')?.value }}</pre>
